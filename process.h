@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ninakamkia <ninakamkia@student.42.fr>      +#+  +:+       +#+        */
+/*   By: yzena <yzena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:08:56 by ninakamkia        #+#    #+#             */
-/*   Updated: 2021/03/18 10:55:30 by ninakamkia       ###   ########.fr       */
+/*   Updated: 2021/03/18 21:30:32 by yzena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ struct parsed_string
 
 enum { O_NOFL = 0, O_WRTFILE = 1, O_WRTENDFILE = 2, O_RDFL = 4, O_NEXT = 8 };
 
-int				count_processes(struct parsed_string x);
-void			exec_realize(struct parsed_string x, int a, int b);
+int				count_processes(struct parsed_string *parse_str);
+void			exec_realize(struct parsed_string *parse_str, int a, int b);
 void			killall(pid_t *KidsPID, int k);
-unsigned char	get_type (struct parsed_string *x);
+unsigned char	get_type (struct parsed_string *parse_str);
+int		conveyor_start(struct parsed_string *parse_str);
 
 #endif
