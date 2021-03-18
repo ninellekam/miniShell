@@ -6,7 +6,7 @@
 /*   By: yzena <yzena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:08:30 by ninakamkia        #+#    #+#             */
-/*   Updated: 2021/03/18 23:19:36 by yzena            ###   ########.fr       */
+/*   Updated: 2021/03/18 23:52:24 by yzena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void exec_realize(struct parsed_string *parse_str, int a, int b)
         argv[j] = parse_str->str[a + j];
     }
     argv[b - a] = NULL;
-    printf(" here go - %s -\n", argv[0]);
     execvp(argv[0], argv);
 }
 
@@ -37,28 +36,27 @@ int count_processes (struct parsed_string *parse_str)
     for (int i = 0; i < parse_str->cnt_coms; i++) {
        cnt_coms += (strcmp(parse_str->str[i], "|") == 0);
     }
-    printf("%s", parse_str->str[1]);
     return cnt_coms + 1;
 }
 
 unsigned char get_type (struct parsed_string *parse_str)
 {
-    unsigned char flags = O_NOFL;
+    parse_str->flags = O_NOFL;
     if (parse_str->cnt_coms < 2)
-        return flags;
+        return parse_str->flags;
     if (!strcmp(parse_str->str[1],"<"))
-        flags |= O_RDFL;
+        parse_str->flags |= O_RDFL;
     if (!strcmp(parse_str->str[parse_str->cnt_coms - 1],";")) {
-        flags |= O_NEXT;
+        parse_str->flags |= O_NEXT;
         parse_str->cnt_coms--;
     }
     if (parse_str->cnt_coms < 3)
-        return flags;
+        return parse_str->flags;
     if (!strcmp(parse_str->str[parse_str->cnt_coms - 2],">"))
-        flags |= O_WRTFILE;
+        parse_str->flags |= O_WRTFILE;
     else if (!strcmp(parse_str->str[parse_str->cnt_coms - 2],">>"))
-        flags |= O_WRTENDFILE;
-    return flags;
+        parse_str->flags |= O_WRTENDFILE;
+    return parse_str->flags;
 }
 
 int main() 

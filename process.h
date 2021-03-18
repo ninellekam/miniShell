@@ -6,7 +6,7 @@
 /*   By: yzena <yzena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:08:56 by ninakamkia        #+#    #+#             */
-/*   Updated: 2021/03/18 22:46:20 by yzena            ###   ########.fr       */
+/*   Updated: 2021/03/18 23:43:20 by yzena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ struct parsed_string
     int *KidsPID;
     int tube[2];
     int tube_o;
+    int flags;
+    int kproc;
+    int a;
+    int b;
 };
 
 enum { O_NOFL = 0, O_WRTFILE = 1, O_WRTENDFILE = 2, O_RDFL = 4, O_NEXT = 8 };
