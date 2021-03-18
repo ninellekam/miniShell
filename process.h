@@ -6,7 +6,7 @@
 /*   By: yzena <yzena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 10:08:56 by ninakamkia        #+#    #+#             */
-/*   Updated: 2021/03/18 21:30:32 by yzena            ###   ########.fr       */
+/*   Updated: 2021/03/18 22:46:20 by yzena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ struct parsed_string
 {
     char **str;
     int cnt_coms;
+    int *KidsPID;
+    int tube[2];
+    int tube_o;
 };
 
 enum { O_NOFL = 0, O_WRTFILE = 1, O_WRTENDFILE = 2, O_RDFL = 4, O_NEXT = 8 };
